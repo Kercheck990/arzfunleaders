@@ -1,72 +1,166 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ARZFUN Leaders</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="login-screen" class="screen active">
-    <h2>Вход в ARZFUN Leaders</h2>
-    <form id="login-form">
-      <input type="text" id="username" placeholder="Логин" required>
-      <input type="password" id="password" placeholder="Пароль" required>
-      <button type="submit">Войти</button>
-    </form>
-    <p>Логин: admin | Пароль: admin</p>
+  <!-- LOGIN -->
+  <div id="login" class="screen center">
+    <div class="login-card">
+      <div class="brand">
+        <div class="logo">ARZ</div>
+        <h1>ARZFUN Leaders</h1>
+      </div>
+
+      <form id="loginForm" class="login-form" autocomplete="off">
+        <label>Логин</label>
+        <input id="u" type="text" placeholder="Логин" value="">
+        <label>Пароль</label>
+        <input id="p" type="password" placeholder="Пароль" value="">
+        <button type="submit" class="btn-primary">Войти</button>
+        <p class="hint">Тестовый логин: <b>admin</b> / <b>admin</b></p>
+      </form>
+    </div>
   </div>
 
-  <div id="main-screen" class="screen">
-    <header>
-      <h1>ARZFUN Leaders</h1>
-      <button id="logout-btn">Выйти</button>
-    </header>
-    <nav>
-      <ul>
-        <li id="menu-profile" class="active">Профиль</li>
-        <li id="menu-factions">Фракции</li>
-      </ul>
-    </nav>
-    <main id="content">
-      <div id="profile" class="tab active">
-        <h2>Профиль пользователя</h2>
-        <div class="user-card">
-          <img src="https://via.placeholder.com/100" alt="Avatar">
-          <div>
-            <h3>Admin</h3>
-            <p>Фракция: Grove</p>
-            <p>Должность: Лидер</p>
-            <p>Онлайн: 00:00</p>
-          </div>
-        </div>
+  <!-- APP -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand-small">
+        <div class="logo-small">A</div>
+        <span>Leaders</span>
       </div>
 
-      <div id="factions" class="tab">
-        <h2>Фракции</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Фракция</th>
-              <th>Лидер</th>
-              <th>Онлайн</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Grove</td>
-              <td>Admin</td>
-              <td>00:00</td>
-            </tr>
-            <tr>
-              <td>Ballas</td>
-              <td>Admin</td>
-              <td>00:00</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </main>
+      <nav class="side-nav">
+        <button data-route="profile" class="nav-item active">
+          <span class="ico">👤</span>Профиль
+        </button>
+        <button data-route="inactive" class="nav-item">
+          <span class="ico">⏱</span>Неактив
+        </button>
+        <button data-route="factions" class="nav-item">
+          <span class="ico">🪧</span>Фракции
+        </button>
+        <hr>
+        <button data-route="leaders" class="nav-item">
+          <span class="ico">👥</span>Руководство
+        </button>
+        <button data-route="assign" class="nav-item">
+          <span class="ico">➕</span>Назначить должность
+        </button>
+        <button id="logout" class="nav-item bottom">
+          <span class="ico">🔑</span>Выйти
+        </button>
+      </nav>
+      <div class="sidebar-foot">ARZ FUN</div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <button id="menuToggle" class="menu-btn">☰</button>
+          <h2 id="pageTitle">Профиль</h2>
+        </div>
+        <div class="user-area">
+          <img id="topAvatar" src="" alt="avatar" class="avatar-xs">
+        </div>
+      </header>
+
+      <section class="content" id="content">
+        <!-- PROFILE PAGE -->
+        <div id="page-profile" class="page active">
+          <div class="profile-header">
+            <div class="big-card">
+              <div class="hero"></div>
+              <div class="avatar-wrap">
+                <img id="profileAvatar" src="https://i.pravatar.cc/120?img=12" class="avatar-lg" alt="avatar">
+                <div class="role-badge">Главный Администратор</div>
+              </div>
+              <h3 id="profileName">Roy_Shelby</h3>
+              <div class="meta">Сервер</div>
+            </div>
+
+            <div class="stats-card">
+              <h3>Общая информация</h3>
+              <div class="info-grid">
+                <div><span class="muted">Ник</span><div id="infoName">Roy_Shelby</div></div>
+                <div><span class="muted">ID</span><div>14</div></div>
+                <div><span class="muted">Фракция</span><div id="infoFaction">GA сервера</div></div>
+                <div><span class="muted">Дата</span><div>25.04.2025</div></div>
+                <div><span class="muted">Сервер</span><div>Red-Rock [8]</div></div>
+                <div><span class="muted">Должность</span><div>8 дней</div></div>
+              </div>
+              <button class="btn-outline" id="editProfile">Изменить пользователя</button>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+            <h4>Последние действия</h4>
+            <div id="logList" class="log-list"></div>
+          </div>
+        </div>
+
+        <!-- LEADERS PAGE -->
+        <div id="page-leaders" class="page">
+          <div class="leaders-top">
+            <div class="search-wrap">
+              <input id="search" placeholder="Поиск по нику..." />
+            </div>
+            <div class="faction-filters">
+              <button class="btn-filter active" data-f="all">Все</button>
+              <button class="btn-filter" data-f="Grove">Grove</button>
+              <button class="btn-filter" data-f="Ballas">Ballas</button>
+            </div>
+            <button id="addLeader" class="btn-primary">+ Добавить руководство</button>
+          </div>
+
+          <div class="table-wrap">
+            <table id="leadersTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Руководитель</th>
+                  <th>Поставлен</th>
+                  <th>Дни</th>
+                  <th>Баллы</th>
+                  <th>Выговоры</th>
+                  <th>Предупреждения</th>
+                  <th>Онлайн</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- FACTIONS PAGE -->
+        <div id="page-factions" class="page">
+          <div class="faction-cards">
+            <div class="faction-card">
+              <h3>Grove</h3>
+              <p>Фракция: Grove</p>
+              <div class="leader-small">Лидер: <span id="groveLeader">Valentain_Vertucci</span></div>
+            </div>
+            <div class="faction-card">
+              <h3>Ballas</h3>
+              <p>Фракция: Ballas</p>
+              <div class="leader-small">Лидер: <span id="ballasLeader">Sensei_Flocka</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- placeholder pages -->
+        <div id="page-inactive" class="page"><h3>Неактив</h3><p>Пусто</p></div>
+        <div id="page-assign" class="page"><h3>Назначить должность</h3><p>Пока заглушка</p></div>
+      </section>
+    </div>
   </div>
 
   <script src="script.js"></script>
