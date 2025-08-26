@@ -1,24 +1,74 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARZ FUN Leaders</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARZFUN Leaders</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
-        <h1>ARZ FUN</h1>
-    </div>
-    <div class="login-container">
-        <h2>Личный кабинет</h2>
-        <form id="login-form">
-            <input type="text" id="login" placeholder="Логин" required>
-            <input type="password" id="password" placeholder="Пароль" required>
-            <button type="submit">Войти</button>
-        </form>
-    </div>
+  <div id="login-screen" class="screen active">
+    <h2>Вход в ARZFUN Leaders</h2>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Логин" required>
+      <input type="password" id="password" placeholder="Пароль" required>
+      <button type="submit">Войти</button>
+    </form>
+    <p>Логин: admin | Пароль: admin</p>
+  </div>
 
-    <script src="script.js"></script>
+  <div id="main-screen" class="screen">
+    <header>
+      <h1>ARZFUN Leaders</h1>
+      <button id="logout-btn">Выйти</button>
+    </header>
+    <nav>
+      <ul>
+        <li id="menu-profile" class="active">Профиль</li>
+        <li id="menu-factions">Фракции</li>
+      </ul>
+    </nav>
+    <main id="content">
+      <div id="profile" class="tab active">
+        <h2>Профиль пользователя</h2>
+        <div class="user-card">
+          <img src="https://via.placeholder.com/100" alt="Avatar">
+          <div>
+            <h3>Admin</h3>
+            <p>Фракция: Grove</p>
+            <p>Должность: Лидер</p>
+            <p>Онлайн: 00:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="factions" class="tab">
+        <h2>Фракции</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Фракция</th>
+              <th>Лидер</th>
+              <th>Онлайн</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Grove</td>
+              <td>Admin</td>
+              <td>00:00</td>
+            </tr>
+            <tr>
+              <td>Ballas</td>
+              <td>Admin</td>
+              <td>00:00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
