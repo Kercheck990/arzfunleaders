@@ -1,67 +1,202 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #121212;
-  color: #fff;
+/* ======================
+   Полные стили — style.css
+   Dark UI для ARZFUN Leaders
+   Поддерживает: index.html, main.html, profile.html, leaders.html, factions.html, administration.html
+   ====================== */
+
+:root{
+  --bg-1: #0f0f10;
+  --bg-2: #141516;
+  --panel: #1c1d1e;
+  --card: #202224;
+  --muted: #9aa0a6;
+  --text: #e6e6e6;
+  --accent: #0aa3d6;
+  --accent-2: #13b37a;
+  --danger: #ff6b6b;
+  --glass: rgba(255,255,255,0.03);
+  --radius: 10px;
+  --shadow: 0 6px 24px rgba(0,0,0,0.6);
+  --max-width: 1200px;
 }
 
-header {
-  background: #1e1e1e;
-  padding: 10px;
-  text-align: center;
-}
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: linear-gradient(180deg,var(--bg-1), var(--bg-2)); color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+img{max-width:100%;display:block}
 
-header h2 {
-  margin: 5px 0;
-}
+/* Helpers */
+.hidden{display:none !important}
+.center{text-align:center}
+.muted{color:var(--muted)}
+.container{max-width:var(--max-width);margin:0 auto;padding:18px}
 
-nav a {
-  color: #bbb;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
+/* ---------------------------
+   AUTH / LOGIN
+   --------------------------- */
+.auth-page, .screen.center { display:flex; align-items:center; justify-content:center; height:100vh; padding:20px; }
+.auth-container, .login-card {
+  width: 420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: calc(var(--radius) + 2px);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.03);
 }
-
-nav a:hover {
-  color: #fff;
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.logo, .logo-small{width:56px;height:56px;background:linear-gradient(135deg,var(--accent), #076b9a);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700}
+.brand h1{margin:0;font-size:20px}
+.auth-container p{color:var(--muted);margin:6px 0 14px}
+.auth-container input, .login-card input {
+  width:100%;
+  padding:10px 12px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.2);
+  color:var(--text);
+  outline: none;
 }
-
-main {
-  padding: 20px;
+.auth-container input::placeholder { color: rgba(255,255,255,0.35); }
+.btn-primary, .auth-container button {
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border:none;
+  background: linear-gradient(90deg,var(--accent), #057ea4);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .06s ease, box-shadow .06s ease;
 }
-
-.auth-page {
-  display: flex;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
+.btn-primary:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(10,163,214,0.08) }
+.bypass {
+  background: var(--danger);
+  margin-top:8px;
 }
+.bypass:hover{ filter:brightness(.95) }
 
-.auth-container {
-  background: #1e1e1e;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
+/* login alternative names */
+#login, .auth-container, .login-card { box-sizing: border-box; }
+
+/* ---------------------------
+   APP LAYOUT (sidebar + main)
+   --------------------------- */
+.app{display:flex;height:100vh;overflow:hidden}
+.sidebar{
+  width: 240px;
+  background: linear-gradient(180deg,var(--panel), #161616);
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  border-right:1px solid rgba(255,255,255,0.02);
 }
-
-.auth-container input {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
+.brand-small{display:flex;align-items:center;gap:10px}
+.side-nav{display:flex;flex-direction:column;gap:6px;flex:1}
+.nav-item{
+  background:transparent;border:none;color:var(--muted);text-align:left;padding:10px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;
 }
+.nav-item:hover{background:rgba(255,255,255,0.02);color:var(--text)}
+.nav-item.active{background:linear-gradient(90deg, rgba(10,163,214,0.08), rgba(10,163,214,0.03)); border-left:3px solid var(--accent); padding-left:8px; color:var(--text)}
+.sidebar-foot{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
 
-.auth-container button {
-  margin: 5px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  background: #007bff;
-  color: #fff;
-  cursor: pointer;
+/* Main content */
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.topbar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+.menu-btn{background:transparent;border:none;color:var(--muted);font-size:20px;cursor:pointer}
+.user-area{display:flex;align-items:center;gap:10px}
+.avatar-xs{width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,0.03);object-fit:cover}
+
+/* Content area */
+.content{padding:22px;overflow:auto;min-height:calc(100vh - 64px)}
+.page{display:none}
+.page.active{display:block}
+
+/* ---------------------------
+   PROFILE / HEADER CARDS
+   --------------------------- */
+.profile-header{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.big-card{flex:0 0 520px;background:linear-gradient(180deg,#27292b,#1f2123);border-radius:12px;padding:18px;position:relative;box-shadow:0 6px 18px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02)}
+.hero{height:64px;background:linear-gradient(90deg,rgba(0,0,0,0.2),rgba(0,0,0,0.0));border-radius:8px;margin-bottom:24px}
+.avatar-wrap{display:flex;align-items:center;gap:12px}
+.avatar-lg{width:110px;height:110px;border-radius:50%;border:4px solid rgba(10,163,214,0.25);background:#111;object-fit:cover}
+.role-badge{background:linear-gradient(90deg,var(--accent-2),#0da3a3);color:#fff;padding:6px 10px;border-radius:999px;font-size:13px}
+.stats-card{flex:1;background:var(--card);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.02)}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.info-grid .muted{font-size:12px;color:var(--muted)}
+.btn-outline{margin-top:12px;padding:9px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--accent);cursor:pointer}
+
+/* timeline */
+.timeline-card{margin-top:18px;background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.log-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.log-item{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;font-size:14px;color:var(--muted)}
+
+/* ---------------------------
+   LEADERS / TABLE / FILTERS
+   --------------------------- */
+.leaders-top{display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.search-wrap input, .leaders-top input { padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;min-width:220px }
+.faction-filters{display:flex;gap:8px}
+.btn-filter{padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;cursor:pointer;color:var(--muted)}
+.btn-filter.active{background:linear-gradient(90deg, rgba(10,163,214,0.08), rgba(10,163,214,0.03));border-color:rgba(10,163,214,0.14);color:var(--text)}
+.table-wrap{background:var(--card);border-radius:10px;padding:8px;border:1px solid rgba(255,255,255,0.02)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:12px;border-bottom:1px solid rgba(255,255,255,0.02);text-align:left;color:#d6d6d6}
+th{background:transparent;color:var(--muted);font-weight:600}
+tr:hover td{background:rgba(255,255,255,0.01)}
+
+/* small avatar in table */
+.table-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover}
+
+/* ---------------------------
+   FACTIONS / SIMPLE LIST
+   --------------------------- */
+.faction-cards{display:flex;gap:12px;flex-wrap:wrap}
+.faction-card, .faction-block{
+  flex:1;
+  min-width:220px;
+  background:var(--panel);
+  padding:16px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.02);
 }
+.faction-card h3{margin:0}
+.faction-block ul{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px}
+.faction-block li{display:flex;align-items:center;justify-content:space-between;padding:8px;background:rgba(255,255,255,0.02);border-radius:8px}
+.faction-block input{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);margin-top:10px}
+.faction-block button{margin-top:8px;padding:8px 10px;border-radius:8px;border:none;background:var(--accent);color:#fff;cursor:pointer}
 
-.auth-container button.bypass {
-  background: #444;
+/* ---------------------------
+   ADMIN / SMALL PAGES
+   --------------------------- */
+header.app-header, header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  padding: 12px 18px;
+  border-bottom:1px solid rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+header h2{margin:0;font-size:18px}
+nav a{color:var(--muted);margin:0 10px;text-decoration:none;font-weight:600}
+nav a:hover{color:var(--text)}
+
+/* Buttons helpers */
+.btn-primary{padding:8px 12px;border-radius:8px;border:none;background:linear-gradient(90deg,var(--accent),#057ea4);color:#fff;cursor:pointer}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px 12px;border-radius:8px;color:var(--muted)}
+
+/* Footer & misc */
+.footer{padding:18px;text-align:center;color:var(--muted);font-size:13px}
+
+/* ---------------------------
+   Responsive
+   --------------------------- */
+@media (max-width: 900px){
+  .sidebar{display:none}
+  .app{flex-direction:column}
+  .profile-header{flex-direction:column}
+  .big-card{width:100%}
+  .auth-container, .login-card{width:100%; max-width:420px}
 }
