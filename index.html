@@ -3,22 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Авторизация</title>
+  <title>Авторизация | Kercheck990</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-<body>
-  <div class="login-container">
-    <h2>Авторизация</h2>
-    <form>
-      <input type="text" placeholder="Логин">
-      <input type="password" placeholder="Пароль">
-      <button type="submit">Войти</button>
-    </form>
-
-    <!-- Временная кнопка -->
-    <button onclick="window.location.href='dashboard.html'" class="bypass-btn">
-      Обойти авторизацию
-    </button>
+<body class="auth-page">
+  <div class="auth-container">
+    <h1>Kercheck990</h1>
+    <p>Вход в систему</p>
+    <input type="text" placeholder="Логин">
+    <input type="password" placeholder="Пароль">
+    <button onclick="fakeLogin()">Авторизоваться</button>
+    <button class="bypass" onclick="bypassAuth()">Обойти авторизацию</button>
   </div>
 </body>
 </html>
